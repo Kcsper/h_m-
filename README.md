@@ -56,4 +56,38 @@ public class HotelManagementSystem {
                 System.out.print("\nEnter guest name: ");
                 String guestName = scanner.next();
                 rooms[roomNumber][1] = guestName;
-                System.out.println("\nCheck-in successf
+                System.out.println("\nCheck-in successful.");
+            } else {
+                System.out.println("\nSorry, this room is already occupied.");
+            }
+        } else {
+            System.out.println("\nInvalid room number. Please try again.");
+        }
+    }
+
+    // Method to check-out guests
+    private static void checkOut() {
+        System.out.print("\nEnter room number: ");
+        int roomNumber = scanner.nextInt() - 1;
+
+        if (roomNumber >= 0 && roomNumber < rooms.length) {
+            if (!rooms[roomNumber][1].equals("Empty")) {
+                System.out.println("\nGuest " + rooms[roomNumber][1] + " has checked out of room " + rooms[roomNumber][0] + ".");
+                rooms[roomNumber][1] = "Empty";
+            } else {
+                System.out.println("\nSorry, this room is already vacant.");
+            }
+        } else {
+            System.out.println("\nInvalid room number. Please try again.");
+        }
+    }
+
+    // Method to view occupancy status
+    private static void viewOccupancy() {
+        System.out.println("\nRoom\tGuest");
+        for (int i = 0; i < rooms.length; i++) {
+            System.out.println(rooms[i][0] + "\t" + rooms[i][1]);
+        }
+    }
+}
+
